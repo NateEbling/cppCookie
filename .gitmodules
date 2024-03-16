@@ -1,0 +1,9 @@
+[submodule "glfw"]
+	path = Cookie/lib/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "imgui"]
+	path = Cookie/lib/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "glm"]
+	path = Cookie/lib/glm
+	url = https://github.com/g-truc/glm

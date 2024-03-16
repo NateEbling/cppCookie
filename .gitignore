@@ -1,0 +1,15 @@
+bin/**
+bin-int/**
+
+*/bin/**
+*/bin-int/**
+
+# Windows project files
+.vs/**
+**.sln
+**.vcxproj
+**.filters
+**.user
+
+# ImGui ini file
+imgui.ini
