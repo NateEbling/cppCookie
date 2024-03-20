@@ -1,4 +1,4 @@
-#include "input/Input.h"
+#include "cookie/Input.h"
 #include "core.h"
 
 namespace Cookie
