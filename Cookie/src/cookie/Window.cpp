@@ -5,13 +5,18 @@ namespace Cookie
 {
 	Window::Window()
 	{
-		this->width = 1920;
-		this->height = 1080;
-		this->title = "My Game";
-		this->r = 1;
-		this->g = 1;
-		this->b = 1;
-		this->a = 1;
+		width = 1920;
+		height = 1080;
+		title = "My Game";
+		r = 1;
+		g = 1;
+		b = 1;
+		a = 1;
+	}
+
+	Window::~Window()
+	{
+
 	}
 
 	void Window::changeScene(int newScene)
@@ -25,7 +30,7 @@ namespace Cookie
 			// Level scene
 			break;
 		default:
-			std::cout << "Unknown scene" << std::endl;
+			std::cerr << "Unknown scene" << std::endl;
 		}
 
 		// currentScene.load();
@@ -47,12 +52,23 @@ namespace Cookie
 	{
 		if (!glfwInit())
 		{
-			std::cout << "Unable to initialize GLFW" << std::endl;
+			std::cerr << "Unable to initialize GLFW" << std::endl;
 		}
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+		glfwWindow = glfwCreateWindow(width, height, title, nullptr, nullptr);
+
+		if (glfwWindow == nullptr)
+		{
+			glfwTerminate();
+			std::cerr << "Failed to create GLFW window" << std::endl;
+		}
+
+		// Callbacks
+		//glfwSetCursorPosCallback(glfwWindow, )
 
 	}
 

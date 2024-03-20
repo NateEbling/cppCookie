@@ -29,7 +29,7 @@ namespace Cookie
 		// static Scene currentScene;
 		static Window window;
 		float r, g, b, a;
-		Window() {}
-
+		Window();
+		~Window();
 	};
 }
