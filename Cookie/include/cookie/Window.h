@@ -21,15 +21,15 @@ namespace Cookie
 		static int setHeight(int newHeight);
 		static void changeScene(int newScene);
 		static void free();
-	private:
+		Window();
+		GLFWwindow* glfwWindow;
+		~Window();
 		int width, height;
 		const char* title;
-		GLFWwindow* glfwWindow;
+
 		// ImGuiLayer imGuiLayer;
-		// static Scene currentScene;
+		// Scene currentScene;
 		static Window window;
 		float r, g, b, a;
-		Window();
-		~Window();
 	};
 }

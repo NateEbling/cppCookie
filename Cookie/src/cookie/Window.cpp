@@ -1,8 +1,10 @@
 #include "core.h"
+#include "cookie/Input.h"
 #include "cookie/Window.h"
 
 namespace Cookie 
 {
+
 	Window::Window()
 	{
 		width = 1920;
@@ -12,6 +14,7 @@ namespace Cookie
 		g = 1;
 		b = 1;
 		a = 1;
+		glfwWindow = nullptr;
 	}
 
 	Window::~Window()
@@ -45,7 +48,8 @@ namespace Cookie
 
 	void Window::run()
 	{
-
+		init();
+		loop();
 	}
 
 	void Window::init()
@@ -55,6 +59,8 @@ namespace Cookie
 			std::cerr << "Unable to initialize GLFW" << std::endl;
 		}
 
+		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -68,9 +74,52 @@ namespace Cookie
 		}
 
 		// Callbacks
-		//glfwSetCursorPosCallback(glfwWindow, )
+		glfwSetCursorPosCallback(glfwWindow, Input::mouseCallback);
+		glfwSetMouseButtonCallback(glfwWindow, Input::mouseButtonCallback);
+		glfwSetScrollCallback(glfwWindow, Input::scrollCallback);
+		glfwSetKeyCallback(glfwWindow, Input::keyCallback);
 
+		glfwMakeContextCurrent(glfwWindow);
+		gladLoadGL();
+
+		// Enable vsync
+		glfwSwapInterval(1);
+
+		glfwShowWindow(glfwWindow);
+
+		changeScene(0);
 	}
 
+	void Window::loop()
+	{
+		float beginTime = (float)glfwGetTime();
+		float endTime;
+		float dt = -1.0f;
 
+		while (!glfwWindowShouldClose(glfwWindow))
+		{
+			glfwPollEvents();
+
+			glClearColor(r, g, b, a);
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			glfwSwapBuffers(glfwWindow);
+		}
+	}
+
+	bool Window::shouldClose()
+	{
+		return glfwWindowShouldClose(glfwWindow);
+	}
+
+	void Window::destroy()
+	{
+		glfwDestroyWindow(glfwWindow);
+		glfwWindow = nullptr;
+	}
+
+	void Window::free()
+	{
+		glfwTerminate();
+	}
 }
