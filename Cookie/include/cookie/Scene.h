@@ -6,6 +6,7 @@ namespace Cookie
 	enum class SceneType : uint8
 	{
 		None,
+		MainMenu,
 		Level,
 		LevelEditor
 	};
@@ -13,6 +14,8 @@ namespace Cookie
 
 	namespace Scene
 	{
+		bool changingScene;
+
 		void init(SceneType type);
 		void start();
 		void load();
