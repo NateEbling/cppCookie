@@ -1,12 +1,14 @@
 #include "core.h"
-#include "core/Window.h"
+#include "cookie/Window.h"
 
 using namespace Cookie;
 
 
 int main()
 {
-	Window::init();
+	Window* window = new Window();
+	window->run();
 
+	window->free();
 	return 0;
 }
