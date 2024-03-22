@@ -32,6 +32,7 @@
 #include <algorithm>
 #include <bitset>
 #include <optional>
+#include <typeinfo>
 
 // Glad (must be before GLFW)
 #include <glad/glad.h>

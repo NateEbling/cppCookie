@@ -4,7 +4,6 @@
 
 namespace Cookie 
 {
-
 	Window::Window()
 	{
 		width = 1920;
