@@ -43,6 +43,7 @@
 // robin-hood-hashing (for better hash maps)
 #include <include/robin_hood.h>
 
+// Easier uint definitions
 typedef uint8_t uint8;
 typedef uint16_t uint16;
 typedef uint32_t uint32;
