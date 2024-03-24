@@ -27,7 +27,10 @@ namespace Cookie
 			// How can we check for derived classes?
 			if (typeid(component).name() == typeid(c).name())
 			{
-
+				try
+				{
+					return component
+				}
 			}
 		}
 	}
