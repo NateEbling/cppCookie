@@ -5,6 +5,8 @@ using namespace Cookie;
 
 int main()
 {
-	
+	Window* win = new Window();
+	win->run();
+
 	return 0;
 }

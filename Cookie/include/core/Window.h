@@ -14,20 +14,19 @@ namespace Cookie
 		// Framebuffer framebuffer;
 		float r, g, b, a;
 		// static Scene currentScene;
-		Window();
-
 		static void changeScene(int newScene);
 
 	public:
+		Window();
 		//static Scene getScene();
-		static GLFWwindow& getWindow();
+		GLFWwindow* getWindow() const { return glfwWindow; }
 		void run();
 		void init();
 		void loop();
-		static int getWidth();
-		static int getHeight();
-		static void setWidth(int newWidth);
-		static void setHeight(int newHeight);
+		int getWidth() const { return width; }
+		int getHeight() const { return height; }
+		void setWidth(int newWidth);
+		void setHeight(int newHeight);
 		//static Framebuffer getFramebuffer();
 		static float getTargetAspectRatio();
 	};
