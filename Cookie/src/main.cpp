@@ -3,7 +3,6 @@
 
 using namespace Cookie;
 
-
 int main()
 {
 	Window* window = new Window();

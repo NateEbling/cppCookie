@@ -11,7 +11,6 @@ namespace Cookie
 		LevelEditor
 	};
 
-
 	namespace Scene
 	{
 		bool changingScene;
