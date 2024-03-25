@@ -3,11 +3,17 @@
 
 namespace Cookie
 {
+	GLuint vaoID, vboID, eboID;
+
 	void LevelEditorScene::init()
 	{
 		loadResources();
 
 		camera = new Camera(glm::vec2(-250, 0));
+
+		defaultShader = new Shader("assets/shaders/default.glsl");
+		defaultShader->compile();
+
 	}
 	
 	// TODO: LevelEditorScene::loadResources

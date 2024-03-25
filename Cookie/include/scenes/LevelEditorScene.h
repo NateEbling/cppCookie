@@ -1,6 +1,7 @@
 #pragma once
 #include "core.h"
 #include "Scene.h"
+#include "renderer/Shader.h"
 
 namespace Cookie
 {
@@ -12,6 +13,7 @@ namespace Cookie
 		//SpriteRender obj1Sprite;
 		//GameObject levelEditorComp = new GameObject("LevelEditor", new Transform(new Vector2f()), 0);
 		void loadResources();
+		Shader* defaultShader;
 	public:
 		void init() override;
 		void update(float dt) override;
