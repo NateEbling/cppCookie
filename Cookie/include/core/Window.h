@@ -9,7 +9,7 @@ namespace Cookie
 	private:
 		int width, height;
 		const char* title;
-		GLFWwindow* glfwWindow;
+		static void* windowPtr;
 		// ImGuiLayer imguiLayer;
 		// Framebuffer framebuffer;
 		float r, g, b, a;
@@ -19,7 +19,7 @@ namespace Cookie
 	public:
 		Window();
 		//static Scene getScene();
-		GLFWwindow* getWindow() const { return glfwWindow; }
+		static Window* getWindow();
 		void run();
 		void init();
 		void loop();
