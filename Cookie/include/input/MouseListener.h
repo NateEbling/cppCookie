@@ -5,6 +5,15 @@ namespace Cookie
 {
 	class MouseListener
 	{
+	private:
+		static MouseListener* instance;
+		double scrollX, scrollY;
+		double xPos, yPos, lastX, lastY;
+		bool mouseButtonPressed[GLFW_MOUSE_BUTTON_LAST];
+		bool isDragging;
+		glm::vec2 gameViewportPos;
+		glm::vec2 gameViewportSize;
+		MouseListener();
 	public:
 		static MouseListener* get();
 		static void mousePosCallback(GLFWwindow* window, double xpos, double ypos);
@@ -23,14 +32,5 @@ namespace Cookie
 		bool mouseButtonDown(int button) { return mouseButtonPressed[button] = true; }
 		void setGameViewportPos(glm::vec2 gViewportPos) { gameViewportPos = gViewportPos; }
 		void setGameViewportSize(glm::vec2 gViewportSize) { gameViewportSize = gViewportSize; }
-	private:
-		static MouseListener* instance;
-		double scrollX, scrollY;
-		double xPos, yPos, lastX, lastY;
-		bool mouseButtonPressed[GLFW_MOUSE_BUTTON_LAST];
-		bool isDragging;
-		glm::vec2 gameViewportPos;
-		glm::vec2 gameViewportSize;
-		MouseListener();
 	};
 }
