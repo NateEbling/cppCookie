@@ -5,6 +5,8 @@
 
 namespace Cookie
 {
+	void* Window::windowPtr;
+
 	Window::Window()
 	{
 		width = 1920;
@@ -14,7 +16,7 @@ namespace Cookie
 		g = 1;
 		b = 1;
 		a = 1;
-		glfwWindow = nullptr;
+		windowPtr = nullptr;
 	}
 
 	// TODO: add changeScene method
@@ -25,6 +27,8 @@ namespace Cookie
 
 	void Window::init()
 	{
+		Window* win = new Window();
+
 		if (!glfwInit())
 		{
 			std::cerr << "Unable to initialize GLFW" << std::endl;
@@ -36,28 +40,28 @@ namespace Cookie
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		glfwWindow = glfwCreateWindow(width, height, title, nullptr, nullptr);
+		win->windowPtr = (void*)glfwCreateWindow(width, height, title, nullptr, nullptr);
 
-		if (glfwWindow == nullptr)
+		if (win->windowPtr == nullptr)
 		{
 			glfwTerminate();
 			std::cerr << "Failed to create GLFW window" << std::endl;
 		}
 
 		// Callbacks
-		glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
-		glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
-		glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
-		glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
+		glfwSetCursorPosCallback((GLFWwindow*)win->windowPtr, MouseListener::mousePosCallback);
+		glfwSetMouseButtonCallback((GLFWwindow*)win->windowPtr, MouseListener::mouseButtonCallback);
+		glfwSetScrollCallback((GLFWwindow*)win->windowPtr, MouseListener::mouseScrollCallback);
+		glfwSetKeyCallback((GLFWwindow*)win->windowPtr, KeyListener::keyCallback);
 
 		// Make OpenGL context current
-		glfwMakeContextCurrent(glfwWindow);
+		glfwMakeContextCurrent((GLFWwindow*)win->windowPtr);
 		gladLoadGL();
 
 		// Enable vsync
 		glfwSwapInterval(1);
 
-		glfwShowWindow(glfwWindow);
+		glfwShowWindow((GLFWwindow*)win->windowPtr);
 
 		// TODO: add changeScene(defaultScene)
 
@@ -69,14 +73,14 @@ namespace Cookie
 		float endTime;
 		float dt = -1.0f;
 
-		while (!glfwWindowShouldClose(glfwWindow))
+		while (!glfwWindowShouldClose((GLFWwindow*)windowPtr))
 		{
 			glfwPollEvents();
 
 			glClearColor(r, g, b, a);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			glfwSwapBuffers(glfwWindow);
+			glfwSwapBuffers((GLFWwindow*)windowPtr);
 		}
 	}
 
@@ -86,7 +90,7 @@ namespace Cookie
 		loop();
 
 		// Free memory
-		glfwDestroyWindow(glfwWindow);
+		glfwDestroyWindow((GLFWwindow*)windowPtr);
 		glfwTerminate();
 		glfwSetErrorCallback(NULL);
 	}
