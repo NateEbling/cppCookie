@@ -7,7 +7,7 @@ namespace Cookie
 	{
 	private:
 		const int MAX_BATCH_SIZE = 1000;
-		//std::list<RenderBatch> batches;
+		//std::vector<RenderBatch> batches;
 		//void addSprite(SpriteRenderer sprite);
 	public:
 		//void addGameObject(GameObject go);

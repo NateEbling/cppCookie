@@ -11,14 +11,28 @@ namespace Cookie
 	// TODO: Scene::start
 	void Scene::start()
 	{
-
+		for (GameObject go : gameObjects)
+		{
+			go.start();
+			// renderer
+		}
+		isRunning = true;
 	}
 
 	// TODO: Scene:addGameObjectToScene
-	/*void Scene::addGameObjectToScene(GameObject go)
+	void Scene::addGameObjectToScene(GameObject go)
 	{
-
-	}*/
+		if (!isRunning)
+		{
+			gameObjects.push_back(go);
+		}
+		else
+		{
+			gameObjects.push_back(go);
+			go.start();
+			// renderer
+		}
+	}
 	
 	void Scene::update(float dt)
 	{
