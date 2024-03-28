@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CAMERA_H
+#define CAMERA_H
 #include "core.h"
 
 namespace Cookie
@@ -19,3 +20,5 @@ namespace Cookie
 		glm::vec2 getProjectionSize() { return projectionSize; }
 	};
 }
+
+#endif

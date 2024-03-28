@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RENDERER_H
+#define RENDERER_H
 #include "core.h"
 
 namespace Cookie
@@ -14,3 +15,5 @@ namespace Cookie
 		void render();
 	};
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TRANSFORM_H
+#define TRANSFORM_H
 #include "core.h"
 
 namespace Cookie
@@ -19,3 +20,5 @@ namespace Cookie
 		bool equals(void* obj);
 	};
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WINDOW_H
+#define WINDOW_H
 
 #include "core.h"
 
@@ -31,3 +32,5 @@ namespace Cookie
 		static float getTargetAspectRatio();
 	};
 }
+
+#endif

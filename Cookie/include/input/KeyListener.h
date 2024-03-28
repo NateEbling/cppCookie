@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KEY_LISTENER_H
+#define KEY_LISTENER_H
 #include "core.h"
 
 namespace Cookie
@@ -15,3 +16,5 @@ namespace Cookie
 		static bool isKeyPressed(int keycode);
 	};
 }
+
+#endif

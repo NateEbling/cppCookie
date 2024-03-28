@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MOUSE_LISTENER_H
+#define MOUSE_LISTENER_H
 #include "core.h"
 
 namespace Cookie
@@ -34,3 +35,5 @@ namespace Cookie
 		void setGameViewportSize(glm::vec2 gViewportSize) { gameViewportSize = gViewportSize; }
 	};
 }
+
+#endif
