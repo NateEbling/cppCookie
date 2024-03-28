@@ -1,5 +1,8 @@
-#pragma once
+#ifndef COMPONENT_H
+#define COMPONENT_H
+
 #include "core.h"
+//#include "core/GameObject.h" // this causes many errors even though header guards are in place
 
 namespace Cookie
 {
@@ -12,9 +15,11 @@ namespace Cookie
 	public:
 		void start();
 		void update(float dt);
-		void imgui();
-		void generateId();
+		virtual void imgui();
+		virtual void generateId();
 		int getUid() { return this->uid; }
 		static void init(int maxId) { ID_COUNTER = maxId; }
 	};
 }
+
+#endif

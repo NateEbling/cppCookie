@@ -10,19 +10,44 @@ namespace Cookie
 		transform(transform),
 		zIndex(zIndex)
 	{
-		this->components = std::list<Component>();
+		this->components = std::vector<Component*>();
 		this->uid = ID_COUNTER++;
 	}
 
 	// TODO: workaround for GameObject::removeComponent
-	void GameObject::removeComponent(Component c)
+	void GameObject::removeComponent(Component* c)
 	{
 
 	}
 
-	void GameObject::addComponent(Component c)
+	void GameObject::addComponent(Component* c)
 	{
-		//c.generateId();
+		c->generateId();
+		this->components.push_back(c);
+		//c.gameObject = this;
+	}
 
+	void GameObject::update(float dt)
+	{
+		for (int i = 0; i < components.size(); i++)
+		{
+			components[i]->update(dt);
+		}
+	}
+
+	void GameObject::start()
+	{
+		for (int i = 0; i < components.size(); i++)
+		{
+			components[i]->start();
+		}
+	}
+
+	void GameObject::imgui()
+	{
+		for (int i = 0; i < components.size(); i++)
+		{
+			components[i]->imgui();
+		}
 	}
 }

@@ -3,44 +3,52 @@
 
 namespace Cookie
 {
+	Scene::Scene()
+	{
+		this->isRunning = false;
+		this->gameObjects = std::vector<GameObject*>();
+		this->activeGameObject = nullptr;
+		this->levelLoaded = false;
+		this->camera = nullptr;
+	}
+
 	void Scene::init()
 	{
 
 	}
 
-	// TODO: Scene::start
 	void Scene::start()
 	{
-		//for (GameObject go : gameObjects)
-		//{
-		//	go.start();
-		//	// renderer
-		//}
-		//isRunning = true;
+		for (GameObject* go : gameObjects)
+		{
+			go->start();
+			// Renderer
+		}
+		isRunning = true;
 	}
 
-	// TODO: Scene:addGameObjectToScene
-	//void Scene::addGameObjectToScene(GameObject go)
-	//{
-	//	if (!isRunning)
-	//	{
-	//		gameObjects.push_back(go);
-	//	}
-	//	else
-	//	{
-	//		gameObjects.push_back(go);
-	//		go.start();
-	//		// renderer
-	//	}
-	//}
-	
+	void Scene::addGameObjectToScene(GameObject* go)
+	{
+		if (!isRunning)
+		{
+			gameObjects.push_back(go);
+			go->start();
+			// Renderer
+		}
+	}
+
+	// TODO: Scene:getGameObject (based on id)
+	GameObject* Scene::getGameObject(int gameObjectId)
+	{
+		return nullptr;
+	}
+
 	void Scene::update(float dt)
 	{
 
 	}
 
-	// TODO: Scene::sceneImgui
-	void Scene::sceneImgui()
+	void Scene::render()
 	{
 
 	}
@@ -61,4 +69,4 @@ namespace Cookie
 	{
 
 	}
-}
+}	

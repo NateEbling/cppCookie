@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SHADER_H
+#define SHADER_H
 #include "core.h"
 
 namespace Cookie
@@ -27,3 +28,5 @@ namespace Cookie
 		void uploadIntArray(const char* varname, int length, const int* array) const;
 	};
 }
+
+#endif
