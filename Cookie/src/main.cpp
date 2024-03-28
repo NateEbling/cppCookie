@@ -5,8 +5,8 @@ using namespace Cookie;
 
 int main()
 {
-	Window* win = new Window();
-	win->run();
+	Window* window = Window::getWindow();
+	window->run();
 
 	return 0;
 }

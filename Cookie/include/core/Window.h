@@ -15,7 +15,7 @@ namespace Cookie
 		float r, g, b, a;
 		// static Scene currentScene;
 		static void changeScene(int newScene);
-
+		static Window* window;
 	public:
 		Window();
 		//static Scene getScene();

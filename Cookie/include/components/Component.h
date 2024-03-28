@@ -1,6 +1,5 @@
 #pragma once
 #include "core.h"
-#include "core/GameObject.h"
 
 namespace Cookie
 {
@@ -9,14 +8,13 @@ namespace Cookie
 	private:
 		static int ID_COUNTER;
 		int uid;
-
+		Component();
 	public:
-		GameObject* gameObject;
-		virtual void start();
-		virtual void update(float dt);
+		void start();
+		void update(float dt);
 		void imgui();
 		void generateId();
-		int getUid() { return uid; }
-		static void init(int maxId);
+		int getUid() { return this->uid; }
+		static void init(int maxId) { ID_COUNTER = maxId; }
 	};
 }

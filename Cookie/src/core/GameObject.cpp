@@ -3,72 +3,26 @@
 
 namespace Cookie
 {
-	GameObject::GameObject(const char* n, Transform t, int zInd)
-		:name(n),
-		transform(t),
-		zIndex(zInd)
+	int GameObject::ID_COUNTER = 0;
+
+	GameObject::GameObject(char* name, Transform transform, int zIndex)
+		:name(name),
+		transform(transform),
+		zIndex(zIndex)
 	{
+		this->components = std::list<Component>();
+		this->uid = ID_COUNTER++;
 	}
 
-	template<typename T> T GameObject::getComponent(T componentClass)
+	// TODO: workaround for GameObject::removeComponent
+	void GameObject::removeComponent(Component c)
 	{
-		for (Component c : components)
-		{
-			// TODO: this needs to work for derived classes also
-			if (typeid(componentClass).name() == typeid(c).name())
-			{
-				return componentClass;
-			}
-		}
-		return nullptr;
-	}
 
-	template<typename T> T GameObject::removeComponent(T componentClass)
-	{
-		for (int i = 0; i < components.size(); i++)
-		{
-			Component c = components[i];
-			if (typeid(componentClass).name() == typeid(c).name)
-			{
-				components.remove(i);
-				return;
-			}
-		}
 	}
 
 	void GameObject::addComponent(Component c)
 	{
-		c.generateId();
-		components.push_back(c);
-		c.gameObject = this;
-	}
+		//c.generateId();
 
-	void GameObject::update(float dt)
-	{
-		for (int i = 0; i < components.size(); i++)
-		{
-			components[i].update(dt);
-		}
-	}
-
-	void GameObject::start()
-	{
-		for (int i = 0; i < components.size(); i++)
-		{
-			components[i].start();
-		}
-	}
-	
-	void GameObject::imgui()
-	{
-		for (Component c : components)
-		{
-			c.imgui();
-		}
-	}
-
-	void GameObject::init(int maxId)
-	{
-		ID_COUNTER = maxId;
 	}
 }

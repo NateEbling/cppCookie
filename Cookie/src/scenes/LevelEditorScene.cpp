@@ -4,7 +4,7 @@
 namespace Cookie
 {
 	GLuint vaoID, vboID, eboID;
-	GameObject levelEditorComp = GameObject("LevelEditor", Transform(glm::vec2()), 0);
+	//GameObject levelEditorComp = GameObject("LevelEditor", Transform(glm::vec2()), 0);
 
 	void LevelEditorScene::init()
 	{
@@ -17,11 +17,11 @@ namespace Cookie
 
 		if (levelLoaded)
 		{
-			if (gameObjects.empty())
+			/*if (gameObjects.empty())
 			{
 				activeGameObject = gameObjects[0];
 			}
-			return;
+			return;*/
 		}
 	}
 	

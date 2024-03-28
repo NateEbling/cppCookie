@@ -10,21 +10,22 @@ namespace Cookie
 	private:
 		static int ID_COUNTER;
 		int uid;
-		const char* name;
-		std::vector<Component> components;
+		char* name;
+		std::list<Component> components;
 		int zIndex;
 	public:
 		Transform transform;
-		GameObject(const char* name, Transform transform, int zIndex);
-		template<typename T> T getComponent(T component);
-		template<typename T> T removeComponent(T componentClass);
+		GameObject(char* name, Transform transform, int zIndex);
+		// TODO: GameObject::getComponent
+		//Component getComponent(Component componentClass); // not sure how to make this work in C++
+		void removeComponent(Component c);
 		void addComponent(Component c);
 		void update(float dt);
 		void start();
 		void imgui();
-		int getzIndex() { return zIndex; }
-		static void init(int maxId);
-		int getUid() { return uid; }
-		std::vector<Component> getAllComponents() { return components; }
+		int getzIndex() { return this->zIndex; }
+		static void init(int maxId) { ID_COUNTER = maxId; }
+		int getUid() { return this->uid; }
+		std::list<Component> getAllComponents() { return this->components; }
 	};
 }

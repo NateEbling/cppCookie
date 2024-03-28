@@ -5,7 +5,8 @@
 
 namespace Cookie
 {
-	void* Window::windowPtr;
+	void* Window::windowPtr = nullptr;
+	Window* Window::window = nullptr;
 
 	Window::Window()
 	{
@@ -16,7 +17,6 @@ namespace Cookie
 		g = 1;
 		b = 1;
 		a = 1;
-		windowPtr = nullptr;
 	}
 
 	// TODO: add changeScene method
@@ -25,10 +25,18 @@ namespace Cookie
 
 	}
 
+	Window* Window::getWindow()
+	{
+		if (window == nullptr)
+		{
+			window = new Window();
+		}
+
+		return window;
+	}
+
 	void Window::init()
 	{
-		Window* win = new Window();
-
 		if (!glfwInit())
 		{
 			std::cerr << "Unable to initialize GLFW" << std::endl;
@@ -40,28 +48,29 @@ namespace Cookie
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		win->windowPtr = (void*)glfwCreateWindow(width, height, title, nullptr, nullptr);
+		//window->windowPtr = (void*)glfwCreateWindow(width, height, title, glfwGetPrimaryMonitor(), NULL); // Use this long term to removed window decorations
+		window->windowPtr = (void*)glfwCreateWindow(width, height, title, NULL, NULL);
 
-		if (win->windowPtr == nullptr)
+		if (window->windowPtr == nullptr)
 		{
 			glfwTerminate();
 			std::cerr << "Failed to create GLFW window" << std::endl;
 		}
 
 		// Callbacks
-		glfwSetCursorPosCallback((GLFWwindow*)win->windowPtr, MouseListener::mousePosCallback);
-		glfwSetMouseButtonCallback((GLFWwindow*)win->windowPtr, MouseListener::mouseButtonCallback);
-		glfwSetScrollCallback((GLFWwindow*)win->windowPtr, MouseListener::mouseScrollCallback);
-		glfwSetKeyCallback((GLFWwindow*)win->windowPtr, KeyListener::keyCallback);
+		glfwSetCursorPosCallback((GLFWwindow*)window->windowPtr, MouseListener::mousePosCallback);
+		glfwSetMouseButtonCallback((GLFWwindow*)window->windowPtr, MouseListener::mouseButtonCallback);
+		glfwSetScrollCallback((GLFWwindow*)window->windowPtr, MouseListener::mouseScrollCallback);
+		glfwSetKeyCallback((GLFWwindow*)window->windowPtr, KeyListener::keyCallback);
 
 		// Make OpenGL context current
-		glfwMakeContextCurrent((GLFWwindow*)win->windowPtr);
+		glfwMakeContextCurrent((GLFWwindow*)window->windowPtr);
 		gladLoadGL();
 
 		// Enable vsync
 		glfwSwapInterval(1);
 
-		glfwShowWindow((GLFWwindow*)win->windowPtr);
+		glfwShowWindow((GLFWwindow*)window->windowPtr);
 
 		// TODO: add changeScene(defaultScene)
 
@@ -106,4 +115,8 @@ namespace Cookie
 	}
 
 	// TODO: add getTargetAspectRatio
+	float Window::getTargetAspectRatio()
+	{
+		return 16.0f / 9.0f;
+	}
 }

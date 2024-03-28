@@ -3,6 +3,13 @@
 
 namespace Cookie
 {
+	int Component::ID_COUNTER = 0;
+
+	Component::Component()
+	{
+		this->uid = -1;
+	}
+
 	void Component::start()
 	{
 
@@ -13,22 +20,17 @@ namespace Cookie
 
 	}
 
-	// TODO: Component::imgui (serialization)
+	// TODO: Component::imgui
 	void Component::imgui()
 	{
-		
+
 	}
 
-	int Component::getUid()
+	void Component::generateId()
 	{
-		if (uid == -1)
+		if (this->uid == -1)
 		{
-			uid = ID_COUNTER++;
+			this->uid = ID_COUNTER++;
 		}
-	}
-
-	void Component::init(int maxId)
-	{
-		ID_COUNTER = maxId;
 	}
 }
