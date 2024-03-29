@@ -20,7 +20,7 @@ namespace Cookie
 		Scene();
 		void addGameObjectToScene(GameObject* go);
 		GameObject* getGameObject(int gameObjectId);
-		void init();
+		virtual void init();
 		virtual void start();
 		virtual void update(float dt);
 		virtual void render();
