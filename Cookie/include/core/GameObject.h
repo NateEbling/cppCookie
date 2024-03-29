@@ -16,8 +16,8 @@ namespace Cookie
 		std::vector<Component*> components;
 		int zIndex;
 	public:
-		Transform transform;
-		GameObject(char* name, Transform transform, int zIndex);
+		Transform* transform;
+		GameObject(char* name, Transform* transform, int zIndex);
 		// TODO: GameObject::getComponent
 		//Component getComponent(Component componentClass); // not sure how to make this work in C++
 		void removeComponent(Component* c);

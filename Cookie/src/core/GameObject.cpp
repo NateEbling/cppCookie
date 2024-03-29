@@ -5,7 +5,7 @@ namespace Cookie
 {
 	int GameObject::ID_COUNTER = 0;
 
-	GameObject::GameObject(char* name, Transform transform, int zIndex)
+	GameObject::GameObject(char* name, Transform* transform, int zIndex)
 		:name(name),
 		transform(transform),
 		zIndex(zIndex)
