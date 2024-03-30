@@ -1,5 +1,5 @@
 #include "core.h"
-#include "core/Camera.h"
+#include "cameras/Camera.h"
 
 namespace Cookie
 {

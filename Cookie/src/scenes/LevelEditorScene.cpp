@@ -7,7 +7,7 @@ namespace Cookie
 	{
 		LevelEditorScene::LevelEditorScene()
 		{
-			this->levelEditorComp = new GameObject("LevelEditor", new Transform(glm::vec2()), 0);
+			this->levelEditorComp = new Entity("LevelEditor", new Transform(glm::vec2()), 0);
 		}
 
 		void LevelEditorScene::init()

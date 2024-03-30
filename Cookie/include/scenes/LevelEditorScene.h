@@ -11,7 +11,7 @@ namespace Cookie
 		class LevelEditorScene : Scene
 		{
 		private:
-			GameObject* levelEditorComp;
+			Entity* levelEditorComp;
 			void loadResources();
 		public:
 			LevelEditorScene();
