@@ -3,7 +3,7 @@
 
 #include "core.h"
 #include "components/Component.h"
-#include "core/Transform.h"
+#include "ecs/Transform.h"
 
 namespace Cookie
 {

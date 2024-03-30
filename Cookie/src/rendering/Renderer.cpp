@@ -1,5 +1,5 @@
 #include "core.h"
-#include "renderer/Renderer.h"
+#include "rendering/Renderer.h"
 
 namespace Cookie
 {
