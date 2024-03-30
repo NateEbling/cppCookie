@@ -1,11 +1,11 @@
 #include "core.h"
-#include "ecs/GameObject.h"
+#include "ecs/Entity.h"
 
 namespace Cookie
 {
-	int GameObject::ID_COUNTER = 0;
+	int Entity::ID_COUNTER = 0;
 
-	GameObject::GameObject(char* name, Transform* transform, int zIndex)
+	Entity::Entity(char* name, Transform* transform, int zIndex)
 		:name(name),
 		transform(transform),
 		zIndex(zIndex)
@@ -15,19 +15,19 @@ namespace Cookie
 	}
 
 	// TODO: workaround for GameObject::removeComponent
-	void GameObject::removeComponent(Component* c)
+	void Entity::removeComponent(Component* c)
 	{
 
 	}
 
-	void GameObject::addComponent(Component* c)
+	void Entity::addComponent(Component* c)
 	{
 		c->generateId();
 		this->components.push_back(c);
 		//c.gameObject = this;
 	}
 
-	void GameObject::update(float dt)
+	void Entity::update(float dt)
 	{
 		for (int i = 0; i < components.size(); i++)
 		{
@@ -35,7 +35,7 @@ namespace Cookie
 		}
 	}
 
-	void GameObject::start()
+	void Entity::start()
 	{
 		for (int i = 0; i < components.size(); i++)
 		{
@@ -43,7 +43,7 @@ namespace Cookie
 		}
 	}
 
-	void GameObject::imgui()
+	void Entity::imgui()
 	{
 		for (int i = 0; i < components.size(); i++)
 		{

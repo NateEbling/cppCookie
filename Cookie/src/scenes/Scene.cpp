@@ -6,8 +6,8 @@ namespace Cookie
 	Scene::Scene()
 	{
 		this->isRunning = false;
-		this->gameObjects = std::vector<GameObject*>();
-		this->activeGameObject = nullptr;
+		this->entities = std::vector<Entity*>();
+		this->activeEntity = nullptr;
 		this->levelLoaded = false;
 		this->camera = nullptr;
 	}
@@ -19,7 +19,7 @@ namespace Cookie
 
 	void Scene::start()
 	{
-		for (GameObject* go : gameObjects)
+		for (Entity* go : entities)
 		{
 			go->start();
 			// Renderer
@@ -27,18 +27,18 @@ namespace Cookie
 		isRunning = true;
 	}
 
-	void Scene::addGameObjectToScene(GameObject* go)
+	void Scene::addEntityToScene(Entity* go)
 	{
 		if (!isRunning)
 		{
-			gameObjects.push_back(go);
+			entities.push_back(go);
 			go->start();
 			// Renderer
 		}
 	}
 
 	// TODO: Scene:getGameObject (based on id)
-	GameObject* Scene::getGameObject(int gameObjectId)
+	Entity* Scene::getEntity(int entityId)
 	{
 		return nullptr;
 	}

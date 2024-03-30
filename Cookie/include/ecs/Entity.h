@@ -1,5 +1,5 @@
-#ifndef GAME_OBJECT_H
-#define GAME_OBJECT_H
+#ifndef ENTITY_H
+#define ENTITY_H
 
 #include "core.h"
 #include "components/Component.h"
@@ -7,7 +7,7 @@
 
 namespace Cookie
 {
-	class GameObject
+	class Entity
 	{
 	private:
 		static int ID_COUNTER;
@@ -17,7 +17,7 @@ namespace Cookie
 		int zIndex;
 	public:
 		Transform* transform;
-		GameObject(char* name, Transform* transform, int zIndex);
+		Entity(char* name, Transform* transform, int zIndex);
 		// TODO: GameObject::getComponent
 		//Component getComponent(Component componentClass); // not sure how to make this work in C++
 		void removeComponent(Component* c);
