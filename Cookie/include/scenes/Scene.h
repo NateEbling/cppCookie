@@ -2,8 +2,8 @@
 #define SCENE_H
 
 #include "core.h"
-#include "core/GameObject.h"
-#include "core/Camera.h"
+#include "ecs/GameObject.h"
+#include "cameras/Camera.h"
 
 namespace Cookie
 {

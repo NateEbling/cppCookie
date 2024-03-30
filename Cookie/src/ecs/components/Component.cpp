@@ -1,5 +1,5 @@
 #include "core.h"
-#include "components/Component.h"
+#include "ecs/components/Component.h"
 
 namespace Cookie
 {

@@ -1,7 +1,7 @@
 #include "core.h"
-#include "core/Window.h"
-#include "input/MouseListener.h"
-#include "input/KeyListener.h"
+#include "graphics/Window.h"
+#include "input/listeners/MouseListener.h"
+#include "input/listeners/KeyListener.h"
 
 namespace Cookie
 {

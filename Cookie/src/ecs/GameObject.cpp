@@ -1,5 +1,5 @@
 #include "core.h"
-#include "core/GameObject.h"
+#include "ecs/GameObject.h"
 
 namespace Cookie
 {

@@ -1,5 +1,5 @@
 #include "core.h"
-#include "renderer/Shader.h"
+#include "rendering/Shader.h"
 
 namespace Cookie
 {
