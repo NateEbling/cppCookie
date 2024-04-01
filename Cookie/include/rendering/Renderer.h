@@ -1,5 +1,6 @@
 #ifndef RENDERER_H
 #define RENDERER_H
+
 #include "core.h"
 
 namespace Cookie
