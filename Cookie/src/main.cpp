@@ -1,15 +1,12 @@
-#include "core.h"
-#include "core/Window.h"
-
-using namespace Cookie;
+#include <iostream>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 int main()
 {
 #ifdef _DEBUG
 	std::cout << "DEBUG MODE" << std::endl;
 #endif
-	Window* window = Window::getWindow();
-	window->run();
 
 	return 0;
 }
