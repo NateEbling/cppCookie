@@ -30,10 +30,10 @@ project "Cookie"
     objdir "../bin-int/%{cfg.buildcfg}"
 
     includedirs { 
-        "third_party/imgui/",
-        "third_party/imgui/examples",
-        "third_party/glad/include",
-        "third_party/glfw/include",
+        "../third_party/imgui/",
+        "../third_party/imgui/examples",
+        "../third_party/glad/include",
+        "../third_party/glfw/include",
     }
     
     files {
@@ -67,6 +67,6 @@ newaction {
     end
 }
 
-include "../third_party/imgui.lua"
-include "../third_party/glfw.lua"
-include "../third_party/glad.lua"
+--include "../third_party/imgui.lua"
+--include "../third_party/glfw.lua"
+--include "../third_party/glad.lua"
