@@ -6,8 +6,7 @@ namespace Cookie::Math
 {
 	struct Vector2
 	{
-		float x;
-		float y;
+		float x, y;
 
 		Vector2()
 		{
@@ -15,19 +14,19 @@ namespace Cookie::Math
 			y = 0;
 		}
 
-		Vector2(float x, float y)
+		Vector2(const float x, const float y)
 		{
 			this->x = x;
 			this->y = y;
 		}
 
-		Vector2(int x, int y)
+		Vector2(const int x, const int y)
 		{
 			this->x = static_cast<float>(x);
 			this->y = static_cast<float>(y);
 		}
 
-		Vector2(U32 x, U32 y)
+		Vector2(const U32 x, const U32 y)
 		{
 			this->x = static_cast<float>(x);
 			this->y = static_cast<float>(y);
