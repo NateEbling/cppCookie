@@ -1,13 +1,12 @@
 #pragma once
 
-#include "pch.h"
+#include "../Core/Core.h"
 
 namespace Cookie::Math
 {
 	struct Vector2
 	{
-		float x;
-		float y;
+		float x, y;
 
 		Vector2()
 		{
@@ -15,19 +14,21 @@ namespace Cookie::Math
 			y = 0;
 		}
 
-		Vector2(float x, float y)
+		Vector2(const Vector2& vector) = default;
+
+		Vector2(const float x, const float y)
 		{
 			this->x = x;
 			this->y = y;
 		}
 
-		Vector2(int x, int y)
+		Vector2(const int x, const int y)
 		{
 			this->x = static_cast<float>(x);
 			this->y = static_cast<float>(y);
 		}
 
-		Vector2(U32 x, U32 y)
+		Vector2(const U32 x, const U32 y)
 		{
 			this->x = static_cast<float>(x);
 			this->y = static_cast<float>(y);
@@ -59,14 +60,14 @@ namespace Cookie::Math
 			return Vector2(x / b.x, y / b.y);
 		}
 
-		float Length() const
+		float length() const
 		{
 			return sqrt(x * x + y * y);
 		}
 
-		static inline float Distance(const Vector2& a, const Vector2& b)
+		static inline float distance(const Vector2& a, const Vector2& b)
 		{
-			return (b - a).Length();
+			return (b - a).length();
 		}
 	};
 }

@@ -31,9 +31,6 @@ project "Cookie"
     targetdir "../bin/%{cfg.buildcfg}"
     objdir "../bin-int/%{cfg.buildcfg}"
 
-    pchheader "pch.h"
-    pchsource "../Cookie/src/Core/pch.cpp"
-
     includedirs { 
         "../third_party/imgui/",
         "../third_party/imgui/examples",
@@ -41,13 +38,10 @@ project "Cookie"
         "../third_party/glfw/include",
     }
 
-    includedirs { "../Cookie/src/Core"}
-
     files {
         "Cookie/src/**.cpp",
         "Cookie/src/**.hpp",
         "Cookie/src/**.h",
-
     }
 
     links { "GLFW", "GLAD", "ImGui" }
@@ -74,6 +68,6 @@ newaction {
     end
 }
 
---include "../third_party/imgui.lua"
---include "../third_party/glfw.lua"
---include "../third_party/glad.lua"
+include "../third_party/imgui.lua"
+include "../third_party/glfw.lua"
+include "../third_party/glad.lua"

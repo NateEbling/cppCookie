@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include "Core.h"
 
 typedef uint8_t U8;
 typedef uint16_t U16;
@@ -11,7 +11,7 @@ typedef int16_t I16;
 typedef int32_t I32;
 typedef int64_t I64;
 
-struct cookie_info
+struct ck_info
 {
 	static constexpr char name[] = "Cookie";
 	static constexpr int version_major = 0;
@@ -21,6 +21,7 @@ struct cookie_info
 
 #define CK_DEBUG_BREAK() __debugbreak()
 #ifdef DEBUG
+#include <cassert>
 #define CK_ASSERT(expr) assert(expr)
 #else
 #define CK_ASSERT(expr)
