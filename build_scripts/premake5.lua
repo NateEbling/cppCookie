@@ -3,20 +3,22 @@ workspace "Cookie"
     configurations { "Debug", "Development", "Release" }
     startproject "Cookie"
 
-    flags { "MultiProcessorCompile" }
-    
     filter "configurations:Debug" 
-        defines { "DEBUG", "DEBUG_SHADER" }
-        symbols "on"
+        defines { "DEBUG" }
+        flags { "MultiProcessorCompile" }
+        optimize "Off"
+        symbols "On"
 
     filter "configurations:Development"
-        defines { "DEBUG", "ASSERTIONS_ENABLED" }
+        defines { "DEBUG" }
+        flags { "MultiProcessorCompile" }
         optimize "Speed"
+        symbols "On"
 
     filter "configurations:Release"
-        defines { "NDEBUG" }
-        optimize "Full"
-        flags { "LinkTimeOptimization" }
+        optimize "Speed"
+        flags { "LinkTimeOptimization", "MultiProcessorCompile" }
+        symbols "Off"
     
     toolset "gcc"
 
@@ -29,13 +31,18 @@ project "Cookie"
     targetdir "../bin/%{cfg.buildcfg}"
     objdir "../bin-int/%{cfg.buildcfg}"
 
+    pchheader "pch.h"
+    pchsource "../Cookie/src/Core/pch.cpp"
+
     includedirs { 
-        "third_party/imgui/",
-        "third_party/imgui/examples",
-        "third_party/glad/include",
-        "third_party/glfw/include",
+        "../third_party/imgui/",
+        "../third_party/imgui/examples",
+        "../third_party/glad/include",
+        "../third_party/glfw/include",
     }
-    
+
+    includedirs { "../Cookie/src/Core"}
+
     files {
         "Cookie/src/**.cpp",
         "Cookie/src/**.hpp",
@@ -67,6 +74,6 @@ newaction {
     end
 }
 
-include "../third_party/imgui.lua"
-include "../third_party/glfw.lua"
-include "../third_party/glad.lua"
+--include "../third_party/imgui.lua"
+--include "../third_party/glfw.lua"
+--include "../third_party/glad.lua"

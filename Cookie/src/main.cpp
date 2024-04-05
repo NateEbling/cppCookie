@@ -1,12 +1,7 @@
-#include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "pch.h"
 
 int main()
 {
-#ifdef _DEBUG
-	std::cout << "DEBUG MODE" << std::endl;
-#endif
-
+	std::cout << "Test" << std::endl;
 	return 0;
 }
