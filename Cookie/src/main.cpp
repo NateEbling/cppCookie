@@ -1,8 +1,7 @@
-#include <iostream>
+#include "pch.h"
 
 int main()
 {
-	std::cout << "DEBUG MODE" << std::endl;
-
+	std::cout << "Test" << std::endl;
 	return 0;
 }
