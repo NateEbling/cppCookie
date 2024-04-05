@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pch.h"
+#include "../Core/Core.h"
 
 namespace Cookie::Math
 {
@@ -13,6 +13,8 @@ namespace Cookie::Math
 			x = 0;
 			y = 0;
 		}
+
+		Vector2(const Vector2& vector) = default;
 
 		Vector2(const float x, const float y)
 		{
@@ -58,14 +60,14 @@ namespace Cookie::Math
 			return Vector2(x / b.x, y / b.y);
 		}
 
-		float Length() const
+		float length() const
 		{
 			return sqrt(x * x + y * y);
 		}
 
-		static inline float Distance(const Vector2& a, const Vector2& b)
+		static inline float distance(const Vector2& a, const Vector2& b)
 		{
-			return (b - a).Length();
+			return (b - a).length();
 		}
 	};
 }

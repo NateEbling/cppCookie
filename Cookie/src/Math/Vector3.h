@@ -1,12 +1,14 @@
 #pragma once
 
-#include "pch.h"
+#include "../Core/Core.h"
 
 namespace Cookie::Math
 {
 	struct Vector3
 	{
-		float x, y, z;
+		float x;
+		float y;
+		float z;
 
 		Vector3()
 		{
@@ -14,6 +16,8 @@ namespace Cookie::Math
 			y = 0;
 			z = 0;
 		}
+
+		Vector3(const Vector3& vector) = default;
 
 		Vector3(const float x, const float y, const float z)
 		{
@@ -37,5 +41,42 @@ namespace Cookie::Math
 		}
 
 		~Vector3() = default;
+
+		Vector3 operator+(const Vector3& b) const
+		{
+			return Vector3
+			(
+				this->x + b.x,
+				this->y + b.y,
+				this->z + b.z
+			);
+		}
+
+		Vector3 operator*(const Vector3& b) const
+		{
+			return Vector3(x * b.x, y * b.y, z * b.z);
+		}
+
+		Vector3 operator-(const Vector3& b) const
+		{
+			return Vector3(x - b.x, y - b.y, z - b.z);
+		}
+
+		Vector3 operator/(const Vector3& b) const
+		{
+			return Vector3(x / b.x, y / b.y, z / b.z);
+		}
+
+		float length() const
+		{
+			return sqrt(x * x + y * y + z * z);
+		}
+
+		void normalize()
+		{
+			x = x / length();
+			y = y / length();
+			z = z / length();
+		}
 	};
 }

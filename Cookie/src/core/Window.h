@@ -10,11 +10,8 @@ namespace Cookie
 	class Window
 	{
 	public:
-		const float r, g, b, a;
-		U32 width, height;
-		const char* title;
-	
-		
-
+		static void init();
+		static void tick();
+		static void shutdown();
 	};
 }

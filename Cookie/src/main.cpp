@@ -1,7 +1,12 @@
-#include "pch.h"
+#include "Core/Window.h"
+
+using namespace Cookie;
 
 int main()
 {
-	std::cout << "Test" << std::endl;
+	Window::init();
+	Window::tick();
+	Window::shutdown();
+
 	return 0;
 }
