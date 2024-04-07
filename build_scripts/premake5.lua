@@ -4,13 +4,13 @@ workspace "Cookie"
     startproject "Cookie"
 
     filter "configurations:Debug" 
-        defines { "DEBUG" }
+        defines { "DEBUG", "COOKIE_EDITOR"}
         flags { "MultiProcessorCompile" }
         optimize "Off"
         symbols "On"
 
     filter "configurations:Development"
-        defines { "DEBUG" }
+        defines { "DEBUG", "COOKIE_EDITOR" }
         flags { "MultiProcessorCompile" }
         optimize "Speed"
         symbols "On"

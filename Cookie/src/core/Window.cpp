@@ -68,4 +68,26 @@ namespace Cookie
 		glfwSetErrorCallback(nullptr);
 		window = nullptr;
 	}
+
+	void Window::setSize(const U32 newWidth, const U32 newHeight)
+	{
+		width = newWidth;
+		height = newHeight;
+		glfwSetWindowSize(window, width, height);
+	}
+
+	U32 Window::getWidth()
+	{
+		return width;
+	}
+
+	U32 Window::getHeight()
+	{
+		return height;
+	}
+
+	void* Window::getHandle()
+	{
+		return window;
+	}
 }
